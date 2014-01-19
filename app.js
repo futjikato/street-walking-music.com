@@ -9,12 +9,16 @@ $(function() {
     function addTrack(track) {
         var newTrack = Mustache.render(template, track);
         row.append(newTrack);
+        $('.js-img-init').each(function() {
+            $(this).attr('src', $(this).data('url')).removeAttr('js-img-init');
+        })
     }
 
-    SC.get("/playlists/15347027/tracks", {limit : 20}, function(tracks){
+    SC.get("/playlists/15347027/tracks", {}, function(tracks){
         $('.sc-loading').hide();
+        // show in reverse order
+        tracks.reverse();
         $.each(tracks, function(i, track) {
-            console.dir(track);
             addTrack(track);
         });
     });
@@ -27,10 +31,9 @@ $(function() {
 
         var playBtn = $(this),
             trackid = playBtn.data('trackid'),
-            trackContainer = playBtn.parents('.track.row');
+            trackContainer = playBtn.parents('.sc-container .track');
 
         if(trackContainer.hasClass('initializing')) {
-            console.log('buffering');
             return;
         }
 
@@ -41,39 +44,32 @@ $(function() {
 
             SC.stream("/tracks/" + trackid, {
                 whileloading: function() {
-                    var percentage = parseInt(100 / this.bytesTotal * this.bytesLoaded);
-                    trackContainer.find('.progress>.meter').css('width', percentage + "%");
-
-                    if(percentage === 100) {
-                        trackContainer.removeClass('loading');
-
-                        if(runningSound !== trackid) {
-                            sounds[runningSound].pause();
-                        }
-                        this.play();
-                    }
+                    var percentage = Math.ceil(100 / this.bytesTotal * this.bytesLoaded);
+                    trackContainer.find('.progress>.meter.sc-loading').css('width', percentage + "%");
                 },
                 onplay: function() {
-                    playBtn.text('Pause');
-                    trackContainer.addClass('playing');
+                    if(runningSound && runningSound !== trackid) {
+                        sounds[runningSound].pause();
+                    }
+
+                    trackContainer.addClass('playing').removeClass('stopped');
                     runningSound = trackid;
                 },
                 onpause: function() {
-                    playBtn.text('Play');
-                    trackContainer.removeClass('playing');
+                    trackContainer.removeClass('playing').addClass('stopped');
                 },
                 whileplaying: function() {
-                    console.log(this.position);
+                    var percentage = Math.ceil(100 / this.duration * this.position);
+                    trackContainer.find('.progress>.meter.sc-playing').css('width', percentage + "%");
                 }
             }, function(s){
                 trackContainer.removeClass('initializing');
-                trackContainer.addClass('loading');
 
                 // cache sound object
                 sounds[trackid] = s;
 
                 // start loading
-                s.load();
+                s.play();
             });
         }
     });

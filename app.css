@@ -1,3 +1,52 @@
-.track {
+.sc-loading .windows8 {
+    left: 50%;
+    margin-left: -100px;
+    margin-top: 50px;
+}
 
+.inner-track-container {
+    height: 250px;
+}
+
+.inner-track-container h3 {
+    font-size: 18px;
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.inner-track-container h4 {
+    font-size: 15px;
+}
+
+.inner-track-container .img-mix {
+    margin-bottom: 8px;
+}
+
+.inner-track-container .img-mix .sc-play {
+    margin: 36px 36px 0 0;
+    width: 35px;
+    height: 35px;
+}
+.playing .inner-track-container .img-mix .sc-play {background: url('img/glyphicons_174_pause.png') no-repeat;}
+.stopped .inner-track-container .img-mix .sc-play {background: url('img/glyphicons_173_play.png') no-repeat;}
+.initializing .inner-track-container .img-mix .sc-play {background: url('img/glyphicons_137_cogwheels.png') no-repeat;}
+
+
+.inner-track-container .progress {
+    position: relative;
+}
+
+.inner-track-container .progress .meter {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.inner-track-container .progress .meter.sc-playing {
+    background-color: #f04124;
+}
+
+footer {
+    padding: 25px 0;
 }
