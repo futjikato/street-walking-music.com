@@ -15,8 +15,16 @@
     overflow: hidden;
 }
 
+.inner-track-container h3 a {
+    color: #222222;
+}
+
 .inner-track-container h4 {
     font-size: 15px;
+}
+
+.inner-track-container h4 a {
+    color: #222222;
 }
 
 .inner-track-container .img-mix {

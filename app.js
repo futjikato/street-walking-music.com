@@ -19,6 +19,7 @@ $(function() {
         // show in reverse order
         tracks.reverse();
         $.each(tracks, function(i, track) {
+            console.log(track);
             addTrack(track);
         });
     });

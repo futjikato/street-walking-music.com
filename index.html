@@ -28,13 +28,15 @@
                 <li class="track stopped">
                     <div class="inner-track-container">
                         <h3 class="text-center" title="{{title}}">
-                            {{title}}
+                            <a href="{{permalink_url}}">{{title}}</a>
                         </h3>
                         <h4 class="text-right">
-                            {{user.username}}
+                            <a href="{{user.permalink_url}}">{{user.username}}</a>
                         </h4>
                         <div class="clearfix img-mix">
-                            <img class="js-img-init left" data-url="{{artwork_url}}{{^artwork_url}}{{user.avatar_url}}{{/artwork_url}}" src="">
+                            <a href="{{permalink_url}}" class="left">
+                                <img class="js-img-init" data-url="{{artwork_url}}{{^artwork_url}}{{user.avatar_url}}{{/artwork_url}}" src="">
+                            </a>
                             <a href="#" data-trackid="{{id}}" class="sc-play right"></a>
                         </div>
                         <div class="progress-container">
