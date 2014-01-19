@@ -14,6 +14,7 @@ $(function() {
         })
     }
 
+    // todo implement limit & offset to lazy load tracks ( currently only 13 in playlist so ... )
     SC.get("/playlists/15347027/tracks", {}, function(tracks){
         $('.sc-loading').hide();
         // show in reverse order
@@ -59,9 +60,22 @@ $(function() {
                 onpause: function() {
                     trackContainer.removeClass('playing').addClass('stopped');
                 },
+                onstop: function() {
+                    trackContainer.removeClass('playing').addClass('stopped');
+                },
                 whileplaying: function() {
                     var percentage = Math.ceil(100 / this.duration * this.position);
                     trackContainer.find('.progress>.meter.sc-playing').css('width', percentage + "%");
+                },
+                onfinish: function() {
+                    trackContainer.removeClass('playing').addClass('stopped');
+                    trackContainer.find('.progress>.meter.sc-playing').css('width', 0 + "%");
+                    this.setPosition(0);
+
+                    var next = trackContainer.next();
+                    if(next.length > 0) {
+                        next.find('a.sc-play').trigger('click');
+                    }
                 }
             }, function(s){
                 trackContainer.removeClass('initializing');
