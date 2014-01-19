@@ -1,0 +1,22 @@
+{
+  "name": "TumblrTiles",
+  "version": "0.0.0",
+  "authors": [
+    "futjikato <m.spindelhirn@cashiers-check.de>"
+  ],
+  "main": "index.html",
+  "license": "proprietary",
+  "homepage": "http://street-walking-music.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "~5.0.3",
+    "mustache": "~0.8.1"
+  }
+}

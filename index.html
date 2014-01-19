@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Street walking music</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" type="text/css" href="bower_components/foundation/css/foundation.min.css">
+        <link rel="stylesheet" type="text/css" href="spinner.css">
+
+        <style>
+            .sc-loading .windows8 {
+                left: 50%;
+                margin-left: -100px;
+                margin-top: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="row">
+            <div class="small-12 text-center">
+                <h1>Street walking music</h1>
+            </div>
+        </div>
+        <div>
+            <ul class="sc-container small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+
+            </ul>
+
+            <!-- Track template -->
+            <ul class="sc-track-template hide">
+                <li class="track row">
+                    <h3 class="text-center">{{title}}</h3>
+                    <h4 class="text-right">{{user.username}}</h4>
+                    <img src="{{artwork_url}}{{^artwork_url}}{{user.avatar_url}}{{/artwork_url}}">
+                    <a href="#" data-trackid="{{id}}" class="sc-play">PLAY</a>
+                    <div class="progress">
+                        <span class="meter" style="width: 0%;"></span>
+                    </div>
+                </li>
+            </ul>
+
+            <!-- Loading screen -->
+            <div class="sc-loading text-center">
+                <h2>Loading music from soundcloud . . .</h2>
+                <div class="row">
+                    <div class="windows8">
+                        <div class="wBall" id="wBall_1">
+                            <div class="wInnerBall">
+                            </div>
+                        </div>
+                        <div class="wBall" id="wBall_2">
+                            <div class="wInnerBall">
+                            </div>
+                        </div>
+                        <div class="wBall" id="wBall_3">
+                            <div class="wInnerBall">
+                            </div>
+                        </div>
+                        <div class="wBall" id="wBall_4">
+                            <div class="wInnerBall">
+                            </div>
+                        </div>
+                        <div class="wBall" id="wBall_5">
+                            <div class="wInnerBall">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="http://connect.soundcloud.com/sdk.js"></script>
+        <script src="bower_components/jquery/jquery.min.js"></script>
+        <script src="bower_components/mustache/mustache.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>
