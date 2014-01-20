@@ -73,7 +73,7 @@ header {
     left: 0;
 }
 
-.inner-track-container .progress .meter.sc-playing {
+.inner-track-container .progress .meter.sc-track-playing {
     background-color: #f04124;
 }
 
