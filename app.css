@@ -4,6 +4,10 @@
     margin-top: 50px;
 }
 
+header {
+    margin: 10px 0 18px;
+}
+
 .inner-track-container {
     height: 250px;
 }
@@ -40,6 +44,24 @@
 .stopped .inner-track-container .img-mix .sc-play {background: url('img/glyphicons_173_play.png') no-repeat;}
 .initializing .inner-track-container .img-mix .sc-play {background: url('img/glyphicons_137_cogwheels.png') no-repeat;}
 
+.inner-track-container .progress-container {
+    position: relative;
+}
+
+.inner-track-container .progress-container .sc-timing {
+    position: absolute;
+    top: 3px;
+    font-family: monospace;
+    font-size: 12px;
+}
+
+.inner-track-container .progress-container .sc-timing-total {
+    right: 5px;
+}
+
+.inner-track-container .progress-container .sc-timing-running {
+    left: 5px;
+}
 
 .inner-track-container .progress {
     position: relative;

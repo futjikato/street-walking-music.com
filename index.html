@@ -10,83 +10,89 @@
         <link rel="stylesheet" type="text/css" href="app.css">
     </head>
     <body>
-        <div class="row">
-            <div class="column small-12 text-center">
-                <h1>
-                    <a class="left" href="http://soundcloud.com/">
-                        <img src="img/powered_by_large_black.png">
-                    </a>
-                    Street walking music
-                </h1>
+        <header>
+            <div class="row">
+                <div class="column small-12 text-center">
+                    <h1>
+                        <a target="_blank" class="left" href="http://soundcloud.com/">
+                            <img src="img/powered_by_large_black.png">
+                        </a>
+                        Street walking music
+                    </h1>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <ul class="sc-container small-block-grid-2 medium-block-grid-3 large-block-grid-4"></ul>
+        </header>
+        <section>
+            <div class="row">
+                <ul class="sc-container small-block-grid-2 medium-block-grid-3 large-block-grid-4"></ul>
 
-            <!-- Track template -->
-            <ul class="sc-track-template hide">
-                <li class="track stopped">
-                    <div class="inner-track-container">
-                        <h3 class="text-center" title="{{title}}">
-                            <a href="{{permalink_url}}">{{title}}</a>
-                        </h3>
-                        <h4 class="text-right">
-                            <a href="{{user.permalink_url}}">{{user.username}}</a>
-                        </h4>
-                        <div class="clearfix img-mix">
-                            <a href="{{permalink_url}}" class="left">
-                                <img class="js-img-init" data-url="{{artwork_url}}{{^artwork_url}}{{user.avatar_url}}{{/artwork_url}}" src="">
-                            </a>
-                            <a href="#" data-trackid="{{id}}" class="sc-play right"></a>
-                        </div>
-                        <div class="progress-container">
-                            <div class="progress">
-                                <span class="meter sc-loading" style="width: 0%;"></span>
-                                <span class="meter sc-playing" style="width: 0%;"></span>
+                <!-- Track template -->
+                <ul class="sc-track-template hide">
+                    <li class="track stopped">
+                        <div class="inner-track-container">
+                            <h3 class="text-center" title="{{title}}">
+                                <a target="_blank" href="{{permalink_url}}">{{title}}</a>
+                            </h3>
+                            <h4 class="text-right">
+                                by <a target="_blank" href="{{user.permalink_url}}">{{user.username}}</a>
+                            </h4>
+                            <div class="clearfix img-mix">
+                                <a href="{{permalink_url}}" class="left">
+                                    <img class="js-img-init" data-url="{{artwork_url}}{{^artwork_url}}{{user.avatar_url}}{{/artwork_url}}" src="">
+                                </a>
+                                <a href="#" data-trackid="{{id}}" class="sc-play right"></a>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress">
+                                    <span class="meter sc-loading" style="width: 0%;"></span>
+                                    <span class="meter sc-playing" style="width: 0%;"></span>
+                                </div>
+                                <p class="sc-timing sc-timing-running hide">00:00</p>
+                                <p class="sc-timing sc-timing-total hide">00:00</p>
                             </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
+                    </li>
+                </ul>
 
-            <!-- Loading screen -->
-            <div class="sc-loading text-center">
-                <h2>Loading music from soundcloud . . .</h2>
-                <div class="row">
-                    <div class="windows8">
-                        <div class="wBall" id="wBall_1">
-                            <div class="wInnerBall">
+                <!-- Loading screen -->
+                <div class="sc-loading text-center">
+                    <h2>Loading music from soundcloud . . .</h2>
+                    <div class="row">
+                        <div class="windows8">
+                            <div class="wBall" id="wBall_1">
+                                <div class="wInnerBall">
+                                </div>
                             </div>
-                        </div>
-                        <div class="wBall" id="wBall_2">
-                            <div class="wInnerBall">
+                            <div class="wBall" id="wBall_2">
+                                <div class="wInnerBall">
+                                </div>
                             </div>
-                        </div>
-                        <div class="wBall" id="wBall_3">
-                            <div class="wInnerBall">
+                            <div class="wBall" id="wBall_3">
+                                <div class="wInnerBall">
+                                </div>
                             </div>
-                        </div>
-                        <div class="wBall" id="wBall_4">
-                            <div class="wInnerBall">
+                            <div class="wBall" id="wBall_4">
+                                <div class="wInnerBall">
+                                </div>
                             </div>
-                        </div>
-                        <div class="wBall" id="wBall_5">
-                            <div class="wInnerBall">
+                            <div class="wBall" id="wBall_5">
+                                <div class="wInnerBall">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="row">
-            <footer class="clearfix">
-                <a class="left" href="http://soundcloud.com/">
+        <footer class="clearfix">
+            <div class="row">
+                <a target="_blank" class="left" href="http://soundcloud.com/">
                     <img src="img/powered_by_black.png">
                 </a>
                 <p class="right">Playlist arranged by Moritz Spindelhirn</p>
-            </footer>
-        </div>
+            </div>
+        </footer>
 
         <script src="http://connect.soundcloud.com/sdk.js"></script>
         <script src="bower_components/jquery/jquery.min.js"></script>
