@@ -8,6 +8,31 @@ header {
     margin: 10px 0 18px;
 }
 
+.progress .meter.slider {
+    position: relative;
+}
+
+.progress .meter.slider .slider-end {
+    position: absolute;
+    right: -4px;
+    height: 0;
+    width: 0;
+    top: -4px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: #000;
+}
+
+.sc-volume-control {
+    position: relative;
+    height: 8px;
+    width: 100px;
+}
+
+.progress .meter.sc-volume-meter {
+    background-color: #4FAC62;
+}
+
 .inner-track-container {
     height: 250px;
 }

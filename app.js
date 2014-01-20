@@ -2,7 +2,8 @@ var sounds = {},
     runningSound,
     trackIds = {},
     limit = 8,
-    offset = 0;
+    offset = 0,
+    volume = 70;
 
 var template = $('.sc-track-template').html(),
     row = $('.sc-container');
@@ -16,7 +17,6 @@ SC.initialize({
 SC.get("/playlists/15347027", {limit: 0}, function(data){
     // we want to load the oldest one first
     offset = data.track_count - limit;
-    console.log('inital offset', offset);
     enableLazyLoading();
 });
 
@@ -75,7 +75,6 @@ function elementVisibilityMayChange (el) {
  */
 function loadTracks() {
     if(offset < -limit) {
-        console.log("disable loading", offset);
         $('.sc-loading').hide();
         return;
     }
@@ -86,7 +85,6 @@ function loadTracks() {
         tracks.reverse();
         $.each(tracks, function(i, track) {
             offset--;
-            console.log("decreasing offset", offset);
             addTrack(track);
         });
 
@@ -121,7 +119,7 @@ var handler = elementVisibilityMayChange($('.sc-loading').get(0));
  * Enables lazy loading by binding the handler to some relevant window events.
  */
 function enableLazyLoading() {
-    handler();
+    loadTracks();
     $(window).on('DOMContentLoaded load resize scroll', handler);
 }
 
@@ -195,6 +193,7 @@ $(function() {
                 sounds[trackid] = s;
 
                 // start loading
+                s.setVolume(volume);
                 s.play();
             });
         }
@@ -225,5 +224,26 @@ $(function() {
         var newPosition = parseInt(s.duration / 100 * percentage);
 
         s.setPosition(newPosition);
+    });
+
+    // todo make volume slider draggable
+    $('.sc-volume-control').on('click', function(e) {
+        var clickX = e.offsetX;
+
+        // validate value
+        if(clickX < 0 && clickX > $(this).innerWidth())
+            return;
+
+        // calc new volume
+        var percentage = Math.ceil(100 / $(this).innerWidth() * clickX);
+        volume = parseInt(percentage);
+
+        // adjust meter length
+        $(this).children().width(clickX);
+
+        // if currently a track is running set volume
+        if(runningSound && sounds[runningSound]) {
+            sounds[runningSound].setVolume(volume);
+        }
     });
 });
